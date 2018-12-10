@@ -37,11 +37,11 @@ node {
 
 
      stage('Production') {
-      withKubeConfig([credentialsId: 'kube-credentiel', serverUrl: 'https://192.168.99.100:8443']) {
+      withKubeConfig([credentialsId: 'kube-credentiel']) {
       
        sh 'kubectl create cm nodejs-app --image=sidati20072/hellonode  -o=yaml --dry-run > deploy/cm.yaml'
 
-sh 'kubectl apply -f deploy/ '
+        sh 'kubectl apply -f deploy/ '
       }
      }
 }

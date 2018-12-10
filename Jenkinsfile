@@ -32,5 +32,16 @@ node {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
+        
     }
+
+
+     stage('Production') {
+      withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://104.155.31.202']) {
+      
+       sh 'kubectl create cm nodejs-app --from-file=src/ --namespace=myapp-production -o=yaml --dry-run > deploy/cm.yaml'
+
+sh 'kubectl apply -f deploy/ --namespace=myapp-production'
+      }
+     }
 }

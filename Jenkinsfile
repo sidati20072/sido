@@ -37,11 +37,11 @@ node {
 
 
      stage('Production') {
-      withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://104.155.31.202']) {
+      withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://192.168.99.100:8443']) {
       
-       sh 'kubectl create cm nodejs-app --from-file=src/ --namespace=myapp-production -o=yaml --dry-run > deploy/cm.yaml'
+       sh 'kubectl create cm nodejs-app --image=sidati20072/hellonode  -o=yaml --dry-run > deploy/cm.yaml'
 
-sh 'kubectl apply -f deploy/ --namespace=myapp-production'
+sh 'kubectl apply -f deploy/ '
       }
      }
 }

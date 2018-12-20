@@ -10,7 +10,8 @@
         args '${computer.jnlpmac} ${computer.name}'
       }
   }}
-     
+     node {
+    def app
   stages{
 
 
@@ -50,6 +51,6 @@
       
       
      }
-
+  }
   }
  }

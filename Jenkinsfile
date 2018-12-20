@@ -33,11 +33,8 @@ node {
    
 
      stage('Production') {      
-
-       sh 'kubectl create cm nodejs-app --image=sidati20072/hellonode  -o=yaml --dry-run > deploy/cm.yaml'
-       sh 'kubectl run --image=sidati20072/hellonode '
-        sh 'kubectl apply -f deploy/ '
-       
+        container ('helm') {   sh "/helm init " }
+      
       
      }
 }

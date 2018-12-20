@@ -11,7 +11,7 @@
       }
   }}
      
-
+  stages{
 node {
     def app
 
@@ -52,5 +52,5 @@ node {
       
      }
 }
-  
+  }
  }

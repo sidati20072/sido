@@ -47,7 +47,7 @@ node {
 
      stage('Production') {      
          
-          sh "docker container ls " 
+          sh "kubectl get po" 
       
       
      }

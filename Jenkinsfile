@@ -33,7 +33,8 @@ node {
    
 
      stage('Production') {      
-        container ('kubernetes') {   sh "/helm init " }
+         
+          sh "docker container ls " 
       
       
      }

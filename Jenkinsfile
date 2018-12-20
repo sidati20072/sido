@@ -2,6 +2,16 @@
  node {
     def app
   
+  stage('Preparation') {
+      //Installing kubectl in Jenkins agent
+      sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl'
+  sh 'chmod +x ./kubectl && mv kubectl /usr/local/sbin'
+
+//Clone git repository
+ // git url:'https://bitbucket.org/advatys/jenkins-pipeline.git'
+   }
+  
+  
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
@@ -33,9 +43,7 @@
    
 
      stage('Production') {      
-          withKubeConfig([serverUrl: 'https://kebernetes',
-                    contextName: ''
-                    ]) {
+          withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://kubernetes']) {
          
             sh 'kubectl get po'
           }

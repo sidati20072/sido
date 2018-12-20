@@ -1,17 +1,4 @@
- pipeline {
-
-  agent { kubernetes {
-    cloud 'kubernetes'
-    label 'test'
-      containerTemplate {
-        name 'jnlp'
-        image 'jenkinsci/jnlp-slave:2.62-alpine'
-        ttyEnabled true
-        args '${computer.jnlpmac} ${computer.name}'
-      }
-  }}
-    
-  stages{
+ 
 
  node {
     def app
@@ -52,6 +39,6 @@
       
       
      }
-  }
-  }
+  
+  
  }

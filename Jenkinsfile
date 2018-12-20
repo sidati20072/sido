@@ -35,7 +35,7 @@
      stage('Production') {      
          
           node ('minikube-agent') {
-            sh 'ls'
+            sh 'kubectl get po'
           }
       
      }

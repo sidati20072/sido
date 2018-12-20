@@ -33,8 +33,10 @@
    
 
      stage('Production') {      
+          withKubeConfig([serverUrl: 'https://kebernetes',
+                    contextName: ''
+                    ]) {
          
-          node ('minikube-agent') {
             sh 'kubectl get po'
           }
       

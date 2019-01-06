@@ -47,7 +47,7 @@
          
               sh "if kubectl get deployment hellonode  2> /dev/null ;then kubectl set image deployments/hellonode hellonode=sidati20072/hellonode:${env.BUILD_NUMBER} ; else  kubectl create deployment --image=sidati20072/hellonode:${env.BUILD_NUMBER} hellonode ; fi"
           sh "if ! kubectl get service hellonode 2>/dev/null  ;then kubectl expose deployment hellonode --type=NodePort --port 8000  ; else echo ;fi"
-}
+
            
           }
       
